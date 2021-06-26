@@ -1,0 +1,21 @@
+﻿@model SortedSet<string>
+@{
+}
+<h2> SortedSet Kullanımı </h2>
+
+<form asp-controller="RedisSortedSet" asp-action="Add" method="post">
+    <input type="text" placeholder="Name" name="Name" />
+    <input type="text" placeholder="Surname" name="Surname" />
+    <input type="number" placeholder="Age" name="Age" />
+    <input type="number" placeholder="Score" name="Score" />
+    <button type="submit" name="btnSave">Ekle</button>
+</form>
+<br />
+
+<h1>Listeleme</h1>
+
+@foreach (string item in Model)
+{
+    <h2>Name : @item  <a asp-action="Remove" asp-controller="RedisSortedSet" asp-route-name="@item">Sil</a> </h2>
+    <br />
+}

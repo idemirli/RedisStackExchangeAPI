@@ -1,0 +1,21 @@
+﻿@model Dictionary<string, string>
+@{
+}
+
+
+<h2> Hash Kullanımı </h2>
+
+<form asp-controller="RedisHashType" asp-action="Add" method="post">
+    <input type="text" placeholder="key" name="key" />
+    <input type="text" placeholder="value" name="Value" />
+    <button type="submit" name="btnSave">Ekle</button>
+</form>
+<br />
+
+<h1>Listeleme</h1>
+
+@foreach (var item in Model)
+{
+    <h2>Name : @item.Key -> @item.Value   <a asp-action="Remove" asp-controller="RedisHashType" asp-route-name="@item.Key">Sil</a> </h2>
+    <br />
+}
